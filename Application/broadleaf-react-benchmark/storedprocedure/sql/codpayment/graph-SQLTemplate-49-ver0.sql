@@ -1,0 +1,6 @@
+SqlNo=54
+SQLNode {
+    sqlTemplate='INSERT INTO BLC_ORDER_PAYMENT (AMOUNT, ARCHIVED, ADDRESS_ID, GATEWAY_TYPE, ORDER_ID , REFERENCE_NUMBER, PAYMENT_TYPE, ORDER_PAYMENT_ID) VALUES (?, ?, ?, ?, ? , ?, ?, ?)',
+    parameters={c_decimal(($BIG_DECIMAL$RS_q36_r1_col17_intCompact$BIG_DECIMAL$ / 1000), 2):DECIMAL, "N":CHAR, NULL:BIGINT, "Passthrough":VARCHAR, RS_q20_r1_col1:BIGINT, NULL:VARCHAR, "COD":VARCHAR, RS_q45_r1_col1:BIGINT},
+    retVals={}
+}

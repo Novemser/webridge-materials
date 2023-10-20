@@ -1,0 +1,36 @@
+DROP PROCEDURE IF EXISTS `Add_sp_61_ver0`;
+DELIMITER $$
+CREATE PROCEDURE Add_sp_61_ver0 (IN M_J_field_order_item_com_broadleafcommerce_rest_api_wrapper_OrderItemWrapper_java_lang_Long_value INT, IN RS_q45_r1_col64 INT, IN RS_q45_r1_col89 VARCHAR(512), IN RS_q51_r1_col1 INT)
+BEGIN
+
+DECLARE RS_q45_r1_col89_intCompact BIGINT DEFAULT NULL;
+DECLARE q1_i1 VARCHAR(512) DEFAULT NULL;
+DECLARE q1_i2 VARCHAR(512) DEFAULT NULL;
+DECLARE q1_i3 BIGINT DEFAULT NULL;
+DECLARE q1_i4 BIGINT DEFAULT NULL;
+DECLARE q1_i5 BIGINT DEFAULT NULL;
+DECLARE q1_i6 BIGINT DEFAULT NULL;
+DECLARE q1_i7 BIGINT DEFAULT NULL;
+DECLARE QUERY_ID_0 INT DEFAULT NULL;
+DECLARE M_I_RS_921_rowCount INT DEFAULT NULL;
+DECLARE cursor_cnt_0 INT DEFAULT NULL;
+
+SET RS_q45_r1_col89_intCompact = get_int_compact(RS_q45_r1_col89);
+IF TRUE THEN
+SET q1_i1 = c_decimal((RS_q45_r1_col89_intCompact/1000),2);
+SET q1_i2 = NULL;
+SET q1_i3 = NULL;
+SET q1_i4 = M_J_field_order_item_com_broadleafcommerce_rest_api_wrapper_OrderItemWrapper_java_lang_Long_value;
+SET q1_i5 = RS_q45_r1_col64;
+SET q1_i6 = NULL;
+SET q1_i7 = RS_q51_r1_col1;
+SET QUERY_ID_0 = 0;
+SAVEPOINT trace0_p7;
+INSERT INTO BLC_DISCRETE_ORDER_ITEM (BASE_RETAIL_PRICE, BASE_SALE_PRICE, BUNDLE_ORDER_ITEM_ID, PRODUCT_ID, SKU_ID , SKU_BUNDLE_ITEM_ID, ORDER_ITEM_ID) VALUES (q1_i1, q1_i2, q1_i3, q1_i4, q1_i5 , q1_i6, q1_i7);
+SET M_I_RS_921_rowCount = ROW_COUNT();
+SELECT M_I_RS_921_rowCount;
+END IF;
+SELECT QUERY_ID_0,q1_i1,q1_i2,q1_i3,q1_i4,q1_i5,q1_i6,q1_i7;
+
+END $$
+DELIMITER ;

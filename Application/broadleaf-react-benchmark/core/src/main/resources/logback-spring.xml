@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  #%L
+  Reference Site Core
+  %%
+  Copyright (C) 2009 - 2016 Broadleaf Commerce
+  %%
+  Broadleaf Commerce React Starter
+  
+  Written in 2017 by Broadleaf Commerce info@broadleafcommerce.com
+  
+  To the extent possible under law, the author(s) have dedicated all copyright and related and neighboring rights to this software to the public domain worldwide. This software is distributed without any warranty.
+  You should have received a copy of the CC0 Public Domain Dedication along with this software. If not, see <http://creativecommons.org/publicdomain/zero/1.0/>.
+  
+  Please Note - The scope of CC0 Public Domain Dedication extends to Broadleaf Commerce React Starter demo application alone. Linked libraries (including all Broadleaf Commerce Framework libraries) are subject to their respective licenses, including the requirements and restrictions specified therein.
+  #L%
+  -->
+
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml" />
+    <property name="LOG_FILE" value="${LOG_FILE:-${LOG_PATH:-${LOG_TEMP:-${java.io.tmpdir:-/tmp}}/}spring.log}"/>
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml" />
+    <include resource="org/springframework/boot/logging/logback/file-appender.xml" />
+    <root level="INFO">
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="FILE" />
+    </root>
+
+    <logger name="org.broadleafcommerce" level="ERROR"/>
+    <logger name="com.broadleafcommerce" level="ERROR"/>
+    <logger name="org.hibernate" level="ERROR"/>
+    <logger name="webridge.storedprocedure.invocation" level="ERROR"/>
+    <logger name="webridge.common" level="ERROR"/> --> -->
+    <logger name="org.broadleafcommerce.common.extensibility.FrameworkXmlBeanDefinitionReader" level="WARN"/>
+    <logger name="org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer" level="INFO"/>
+    <logger name="org.springframework.boot.SpringApplication" level="INFO"/>
+    <logger name="org.hibernate.cache.ehcache.internal.strategy.AbstractReadWriteEhcacheAccessStrategy" level="ERROR"/>
+
+    <!-- Remove when https://github.com/BroadleafCommerce/QA/issues/115 is resolved; this is to repress some very noisy
+            warn-level logging in this component  -->
+    <logger name="org.hibernate.engine.internal.StatefulPersistenceContext" level="ERROR"/>
+
+    <!-- Enable this appender and logger for workflow log functionality. This is highly recommended for production. -->
+    <!--<property name="WORKFLOW_LOG_FILE" value="${WORKFLOW_LOG_FILE:-${java.io.tmpdir:-/tmp}/blc-logs/workflow.log}"/>-->
+    <!--<appender name="rollingDailyEnterpriseWorkflow" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+       <!--<file>${WORKFLOW_LOG_FILE}</file>-->
+       <!--<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+           <!--&lt;!&ndash; daily rollover &ndash;&gt;-->
+           <!--<fileNamePattern>${WORKFLOW_LOG_FILE}.%d{yyyy-MM-dd-HH-mm}.log</fileNamePattern>-->
+           <!--<maxHistory>30</maxHistory>-->
+       <!--</rollingPolicy>-->
+
+       <!--<encoder>-->
+           <!--<pattern>[%-5level] %d{MM-dd-yyyy HH:mm:ss} %logger{35} - %message%n</pattern>-->
+       <!--</encoder>-->
+    <!--</appender>-->
+
+    <!--<logger name="com.broadleafcommerce.enterprise.workflow.process.detail" level="DEBUG">-->
+       <!--<appender-ref ref="rollingDailyEnterpriseWorkflow"/>-->
+    <!--</logger>-->
+</configuration>

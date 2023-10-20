@@ -1,0 +1,6 @@
+SqlNo=107
+SQLNode {
+    sqlTemplate='UPDATE BLC_ORDER_LOCK SET LOCKED = 'N' WHERE ORDER_ID = ? AND LOCK_KEY = ?',
+    parameters={RS_q20_r1_col1:BIGINT, "00000000-0000-0000-0000-000000000000":VARCHAR},
+    retVals={}
+}

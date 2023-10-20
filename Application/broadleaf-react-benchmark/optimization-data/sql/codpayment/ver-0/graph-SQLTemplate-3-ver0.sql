@@ -1,0 +1,6 @@
+SqlNo=31
+SQLNode {
+    sqlTemplate='UPDATE BLC_ORDER_LOCK SET LOCKED = 'Y', LAST_UPDATED = ? WHERE ORDER_ID = ? AND (LOCKED = 'N' OR LAST_UPDATED < ?) AND LOCK_KEY = ?',
+    parameters={__nd__func__currentTimeMs__42__105:BIGINT, RS_q20_r1_col1:BIGINT, -1:BIGINT, "00000000-0000-0000-0000-000000000000":VARCHAR},
+    retVals={}
+}

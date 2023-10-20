@@ -1,0 +1,8 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Sat Oct 10 14:11:00 CST 2020
+mysql-connector-java-5.1.46.jar>=
+mysql-connector-java-5.1.46-sources.jar>=
+mysql-connector-java-5.1.46.jar>central=
+mysql-connector-java-5.1.46.pom>central=
+mysql-connector-java-5.1.46-sources.jar>central=
+mysql-connector-java-5.1.46.pom>=

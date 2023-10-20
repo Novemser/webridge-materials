@@ -1,0 +1,8 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Thu May 07 11:54:33 CST 2020
+https\://repo.maven.apache.org/maven2/.lastUpdated=1588823673353
+http\://nexus.broadleafcommerce.org/nexus/content/groups/community-snapshots/.lastUpdated=1588823672583
+http\://nexus.broadleafcommerce.org/nexus/content/groups/community-releases/.error=
+https\://repo.maven.apache.org/maven2/.error=
+http\://nexus.broadleafcommerce.org/nexus/content/groups/community-snapshots/.error=
+http\://nexus.broadleafcommerce.org/nexus/content/groups/community-releases/.lastUpdated=1588823673148

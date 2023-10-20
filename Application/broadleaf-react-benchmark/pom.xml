@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <parent>
+        <groupId>org.broadleafcommerce</groupId>
+        <artifactId>broadleaf-boot-starter-parent</artifactId>
+        <version>6.0.4-GA</version>
+        <relativePath />
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.mycompany</groupId>
+    <artifactId>boot-react-starter</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>Broadleaf Spring Boot React Starter</name>
+    <url>http://www.blc-archetype.com</url>    
+    
+    <licenses>
+        <license>
+            <name>CC0 1.0 Universal</name>
+            <url>https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt</url>
+            <distribution>repo</distribution>
+            <comments>A business-friendly OSS license</comments>
+        </license>
+    </licenses>
+
+    <repositories>
+        <repository>
+            <id>public snapshots</id>
+            <name>public snapshots</name>
+            <url>http://nexus.broadleafcommerce.org/nexus/content/groups/community-snapshots/</url>
+        </repository>
+        <repository>
+            <id>public releases</id>
+            <name>public releases</name>
+            <url>http://nexus.broadleafcommerce.org/nexus/content/groups/community-releases/</url>
+        </repository>
+        <repository>
+			<id>central</id>
+			<name>Central Repository</name>
+			<url>https://repo.maven.apache.org/maven2</url>
+			<layout>default</layout>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>spring</id>
+			<url>https://maven.aliyun.com/repository/spring</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+    </repositories>
+
+    <properties>
+        <broadleaf-api-authentication.version>1.0.0-SNAPSHOT</broadleaf-api-authentication.version>
+
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        
+        <!--suppress UnresolvedMavenProperty -->
+        <debug.args>-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=${debug.port}</debug.args>
+        <boot.jvm.memory>-Xmx1536M</boot.jvm.memory>
+        <boot.jvm.args>${boot.jvm.memory} ${debug.args}</boot.jvm.args>
+        <mysql-jdbc-version>5.1.46</mysql-jdbc-version>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.uri>${project.baseUri}</project.uri>
+    </properties>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <configuration>
+                        <jvmArguments>${boot.jvm.args}</jvmArguments>
+                    </configuration>
+                </plugin>
+
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.zeroturnaround</groupId>
+                <artifactId>jrebel-maven-plugin</artifactId>
+                <version>1.1.7</version>
+                <executions>
+                    <execution>
+                        <id>generate-rebel-xml</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>license-maven-plugin</artifactId>
+                <version>1.5</version>
+                <configuration>
+                    <verbose>false</verbose>
+                    <addSvnKeyWords>false</addSvnKeyWords>
+                    <addJavaLicenseAfterPackage>false</addJavaLicenseAfterPackage>
+                    <organizationName>Broadleaf Commerce</organizationName>
+                    <inceptionYear>2009</inceptionYear>
+                    <licenseName>blc_cc0</licenseName>
+                    <licenseResolver>${project.uri}/licenses</licenseResolver>
+                    <excludes>
+                        <exclude>**/*.sql</exclude>
+                        <exclude>**/*.html</exclude>
+                        <exclude>**/*font-awesome*</exclude>
+                        <exclude>**/*jquery*</exclude>
+                        <exclude>**/*modernizr*</exclude>
+                        <exclude>**/*responsive-tables*</exclude>
+                        <exclude>**/spectrum.css</exclude>
+                        <exclude>**/spectrum.js</exclude>
+                        <exclude>**/redactor.js</exclude>
+                        <exclude>**/fontcolor.js</exclude>
+                        <exclude>**/fontsize.js</exclude>
+                        <exclude>**/typeahead.bundle.js</exclude>
+                        <exclude>**/sitemap/**/*.xml</exclude>
+                        <exclude>**/bootstrap*.css</exclude>
+                        <exclude>**/carousel*.css</exclude>
+                        <exclude>**/*.json</exclude>
+                        <exclude>**/material-kit.css</exclude>
+                    </excludes>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>first</id>
+                        <goals>
+                            <goal>update-file-header</goal>
+                            <goal>update-project-license</goal>
+                        </goals>
+                        <phase>process-sources</phase>
+                        <configuration>
+                            <roots>
+                                <root>src/main</root>
+                                <root>src/test</root>
+                                <root>app</root>
+                            </roots>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+    
+    <profiles>
+        <profile>
+            <id>jrebel</id>
+            <properties>
+                <!--suppress UnresolvedMavenProperty -->
+                <boot.jvm.args>${boot.jvm.memory} ${debug.args} ${jrebel.agent.args}</boot.jvm.args>
+            </properties>
+        </profile>
+    </profiles>
+    
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>webridge</groupId>
+                <artifactId>webridge-common-mysql-driver</artifactId>
+                <version>${mysql-jdbc-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>webridge</groupId>
+                <artifactId>webridge-common-basic-components</artifactId>
+                <version>0.1</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.mycompany</groupId>
+                <artifactId>boot-react-starter-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.broadleafcommerce</groupId>
+                <artifactId>broadleaf-api-authentication</artifactId>
+                <version>${broadleaf-api-authentication.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <modules>
+        <module>core</module>
+        <module>admin</module>
+        <module>api</module>
+<!--        <module>site</module>-->
+    </modules>
+
+</project>

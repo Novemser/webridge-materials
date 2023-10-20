@@ -1,0 +1,3 @@
+[submodule "broadleafcommerce"]
+	path = broadleafcommerce
+	url = ../../../../broadleafcommerce.git
