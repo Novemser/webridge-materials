@@ -1,0 +1,20 @@
+DROP PROCEDURE IF EXISTS `Purchase_sp_18_ver0`;
+DELIMITER $$
+CREATE PROCEDURE Purchase_sp_18_ver0 (IN M_L_String__order_com_salesmanager_shop_model_order_v1_PersistableOrder_currency VARCHAR(512))
+BEGIN
+
+DECLARE q1_i1 VARCHAR(512) DEFAULT NULL;
+DECLARE QUERY_ID_0 INT DEFAULT NULL;
+DECLARE M_I_RS_23_size INT DEFAULT NULL;
+DECLARE cursor_cnt_0 INT DEFAULT NULL;
+
+IF TRUE THEN
+SET q1_i1 = M_L_String__order_com_salesmanager_shop_model_order_v1_PersistableOrder_currency;
+SET QUERY_ID_0 = 0;
+SELECT currency0_.CURRENCY_ID AS CURRENCY1_8_, currency0_.CURRENCY_CODE AS CURRENCY2_8_, currency0_.CURRENCY_CURRENCY_CODE AS CURRENCY3_8_, currency0_.CURRENCY_NAME AS CURRENCY4_8_, currency0_.CURRENCY_SUPPORTED AS CURRENCY5_8_ FROM CURRENCY currency0_ WHERE currency0_.CURRENCY_CODE = q1_i1;
+SET M_I_RS_23_size = FOUND_ROWS();
+END IF;
+SELECT QUERY_ID_0,q1_i1;
+
+END $$
+DELIMITER ;

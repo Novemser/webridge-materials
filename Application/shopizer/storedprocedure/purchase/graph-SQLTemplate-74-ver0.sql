@@ -1,0 +1,6 @@
+SqlNo=92
+SQLNode {
+    sqlTemplate='INSERT INTO ORDER_PRODUCT (ONETIME_CHARGE, ORDER_ID, PRODUCT_NAME, PRODUCT_QUANTITY, PRODUCT_SKU , ORDER_PRODUCT_ID) VALUES (?, ?, ?, ?, ? , ?)',
+    parameters={c_decimal($BIG_DECIMAL$RS_q19_r1_col71_intCompact$BIG_DECIMAL$, $BIG_DECIMAL$RS_q19_r1_col71_scale$BIG_DECIMAL$):DECIMAL, (RS_q61_r1_col1 * 50):BIGINT, RS_q19_r1_col140:VARCHAR, RS_q18_r1_col19:INT, RS_q19_r1_col47:VARCHAR, (RS_q71_r1_col1 * 50):BIGINT},
+    retVals={}
+}

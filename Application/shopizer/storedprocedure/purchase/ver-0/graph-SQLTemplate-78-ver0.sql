@@ -1,0 +1,6 @@
+SqlNo=96
+SQLNode {
+    sqlTemplate='UPDATE SM_TRANSACTION SET AMOUNT = ?, DATE_CREATED = ?, DATE_MODIFIED = ?, UPDT_ID = ?, DETAILS = ?, ORDER_ID = ?, PAYMENT_TYPE = ?, TRANSACTION_DATE = ?, TRANSACTION_TYPE = ? WHERE TRANSACTION_ID = ?',
+    parameters={c_decimal((0 + (0 + ($BIG_DECIMAL$RS_q19_r1_col71_intCompact$BIG_DECIMAL$ * RS_q18_r1_col19))), $BIG_DECIMAL$RS_q19_r1_col71_scale$BIG_DECIMAL$):DECIMAL, FROM_UNIXTIME((((__nd__func__currentTimeMs__42__141 / 1000) * 1000) / 1000)):DATETIME, FROM_UNIXTIME((((__nd__func__currentTimeMs__42__192 / 1000) * 1000) / 1000)):DATETIME, NULL:VARCHAR, NULL:LONGTEXT, (RS_q61_r1_col1 * 50):BIGINT, "MONEYORDER":VARCHAR, FROM_UNIXTIME((((__nd__func__currentTimeMs__42__133 / 1000) * 1000) / 1000)):DATETIME, "AUTHORIZECAPTURE":VARCHAR, (RS_q55_r1_col1 * 50):BIGINT},
+    retVals={}
+}
