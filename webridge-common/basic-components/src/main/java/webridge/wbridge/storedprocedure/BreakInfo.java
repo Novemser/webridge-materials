@@ -1,0 +1,14 @@
+package webridge.wbridge.storedprocedure;
+
+public enum BreakInfo {
+  DIFF_CONNECTION,
+  ND_FUNC_IN_PC,
+  ND_FUNC_IN_PC_SEEN,
+  ND_FUNC_IN_PARAM,
+  ND_FUNC_IN_PARAM_SEEN,
+  NOT_BREAK,
+  NO_PREV,
+  FORCE_BREAK,
+  INCONVERTIBLE_IN_PC,
+  INCONVERTIBLE_IN_PARAM,
+}
