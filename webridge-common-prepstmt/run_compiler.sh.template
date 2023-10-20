@@ -1,0 +1,26 @@
+#!/bin/bash
+
+./gradlew build publishToMavenLocal
+
+APP_NAME=shopizer
+APP_BASE_DIR=/home/shopizer-compiler-instance/sm-shop
+GENERATED_SP_DIR=/home/offline-compiler-sps/shopizer
+SCHEMA_DEFINE_FILE=$APP_BASE_DIR/shopizer_schema.sql
+
+CLASSPATH=./lib/build/libs/lib.jar:./slf4j-simple-1.7.30.jar
+CONCOLIC_EXEC_ENDPOINT=http://127.0.0.1:8099
+CONCOLIC_JDK_PATH=/home/openjdk8/build/linux-x86_64-normal-zero-release/images/j2sdk-image
+
+echo "Downloading logger implementation from maven..."
+wget --no-clobber https://repo1.maven.org/maven2/org/slf4j/slf4j-simple/1.7.30/slf4j-simple-1.7.30.jar
+echo "grant {permission java.net.SocketPermission \"localhost:1024-\",\"accept,connect,resolve,listen\";};" > /tmp/webridge.jvm.policy
+
+java -Djava.security.policy=/tmp/webridge.jvm.policy \
+-classpath $CLASSPATH \
+webridge.common.offline.compiler.OfflineCompilerServer \
+--baseDir $APP_BASE_DIR \
+--concolic-http-endpoint $CONCOLIC_EXEC_ENDPOINT \
+--concolic-jdk-path $CONCOLIC_JDK_PATH \
+--sp-def-dir $GENERATED_SP_DIR \
+--schema-sql $SCHEMA_DEFINE_FILE \
+--app-name $APP_NAME
