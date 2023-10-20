@@ -1,0 +1,88 @@
+server:
+  port: 8000
+spring:
+  profiles:
+    active: dev
+  banner:
+    location: ["classpath:banner.txt", "file:./banner.txt"]
+  freemarker:
+    suffix: .ftl
+    cache: false
+    settings:
+      template_exception_handler: rethrow
+      number_format: 0.##
+    template-loader-path: ["classpath:/templates/", "file:./templates/"]
+  messages:
+    basename: i18n/message
+  servlet:
+    multipart:
+      max-file-size: -1
+      max-request-size: -1
+
+
+#  resources:
+#    static-locations: ["classpath:static/", "file:./static/"]
+
+# 配置mapper.xml位置，这个位置可以在pom.xml里配置
+mybatis-plus:
+  mapper-locations: classpath:/*Mapper.xml
+  global-config:
+    banner: false
+
+
+# Each config entry has a header:
+# 1) [Runtime] the config is only valid in the runtime library,
+# 2) [Offline] the config is only valid in the offline analyzer,
+# 3) [Runtime, Offline] the config is valid in both the runtime library and offline analyzer.
+
+# [Runtime, Offline]
+# The url pattern matching rules of the API endpoints.
+sp.api.urilist: "[{name:\"SaveTopic\", uri:\"/api/topic\", method:\"POST\"}, {name:\"GetIndex\", uri:\"/api/index\", method:\"GET\"}, {name:\"GetTop100\", uri:\"/top100\", method:\"GET\"}, {name:\"GetUser\", uri:\"/api/user/(.*?)\", method:\"GET\"}, {name:\"EditTopic\", uri:\"/api/topic/(.*?)\", method:\"PUT\"}]"
+
+# [Runtime, Offline]
+# The names of the APIs that requires webridge to optimize
+enable.sp.apilist: SaveTopic, GetIndex, GetTop100, GetUser, EditTopic
+
+
+# [Runtime]
+# The directory that stores the generated stored procedures from webridge.
+# The Runtime of webridge automatically detects stored procedures inside this directory.
+# If webridge.offline.compiler.enable=true, the runtime sends the recorded path to the offline analyzer,
+# and save the generated stored procedure in this directory.
+spdef.dir: /home/offline-compiler/pybbs/sql
+
+# [Offline]
+# Whether to enable webridge for concolic executing the APIs listed in `enable.sp.apilist`
+# Must set to false if [Runtime]
+webridge.enable.concolic.execution: false
+
+# [Runtime]
+# Whether to record the query execution results for APIs listed in `enable.sp.apilist`
+trace.sql.enable: false
+
+# [Runtime]
+# Whether to use the generated stored procedure to execute APIs listed in `enable.sp.apilist`
+webridge.use.sp: false
+# The heading number of requests that is used to warm up the API's execution.
+# These requests will execute normally without invoking stored procedures
+webridge.use.sp.warmup: 5
+# The threshold that identifies a hot path
+recorder.threshold: 5
+
+# [Runtime]
+# ---------------------- Start configurations for the offline analyzer
+webridge.offline.compiler.enable: false
+# The ip address that the application going to connect with
+webridge.offline.compiler.host: 127.0.0.1
+# the database that is used to automatically register the generated stored procedures
+
+db.jdbcUrl: jdbc:mysql://127.0.0.1:3306/pybbs_ys?autoReconnect=true&useLocalSessionState=true&readOnlyPropagatesToServer=false&useSSL=false&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+db.user: admin
+db.password: password
+
+# ---------------------- End configurations for the offline analyzer
+
+logging:
+  level:
+    webridge: ERROR
+    webridge.common: ERROR
