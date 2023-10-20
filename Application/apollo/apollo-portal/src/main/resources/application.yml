@@ -1,0 +1,114 @@
+#
+# Copyright 2022 Apollo Authors
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+spring:
+  application:
+    name: apollo-portal
+  profiles:
+    active: ${apollo_profile}
+  jpa:
+    properties:
+      hibernate:
+        metadata_builder_contributor: com.ctrip.framework.apollo.common.jpa.SqlFunctionsMetadataBuilderContributor
+        query:
+          plan_cache_max_size: 192 # limit query plan cache max size
+  session:
+    store-type: jdbc
+    jdbc:
+      initialize-schema: never
+  servlet:
+    multipart:
+      max-file-size: 200MB  # import data configs
+      max-request-size: 200MB
+  datasource:
+    hikari:
+      maximum-pool-size: 1000
+      minimum-idle: 25
+server:
+  port: 8070
+  compression:
+    enabled: true
+  tomcat:
+    use-relative-redirects: true
+    threads:
+      max: 1000
+  servlet:
+    session:
+      cookie:
+        # prevent csrf
+        same-site: Lax
+      timeout: 1000d
+
+
+logging:
+  file:
+    name: /home/apollo-portal.log
+  level:
+    root: INFO
+
+management:
+  health:
+    status:
+      order: DOWN, OUT_OF_SERVICE, UNKNOWN, UP
+    ldap:
+      enabled: false # disable ldap health check by default
+
+# Each config entry has a header:
+# 1) [Runtime] the config is only valid in the runtime library,
+# 2) [Offline] the config is only valid in the offline analyzer,
+# 3) [Runtime, Offline] the config is valid in both the runtime library and offline analyzer.
+
+# [Runtime, Offline]
+# The url pattern matching rules of the API endpoints.
+sp.api.urilist: "[{name:\"GetApps\", uri:\"/apps\", method:\"GET\"}, {name:\"GetIndex\", uri:\"/\", method:\"GET\"}, {name:\"GetAppConfig\", uri:\"/config.html?#/appid=(.*?)\", method:\"GET\"}, {name:\"GetUser\", uri:\"/user\", method:\"GET\"}]"
+
+  # [Runtime, Offline]
+# The names of the APIs that requires webridge to optimize
+enable.sp.apilist: GetApps, GetIndex, GetAppConfig, GetUser
+
+  # [Runtime]
+  # The directory that stores the generated stored procedures from webridge.
+  # The Runtime of webridge automatically detects stored procedures inside this directory.
+  # If webridge.offline.compiler.enable=true, the runtime sends the recorded path to the offline analyzer,
+# and save the generated stored procedure in this directory.
+spdef.dir: /home/offline-compiler/apollo/sql
+
+  # [Offline]
+# Whether to enable webridge for concolic executing the APIs listed in `enable.sp.apilist`
+webridge.enable.concolic.execution: false
+
+  # [Runtime]
+# Whether to record the query execution results for APIs listed in `enable.sp.apilist`
+trace.sql.enable: false
+
+  # [Runtime]
+# Whether to use the generated stored procedure to execute APIs listed in `enable.sp.apilist`
+webridge.use.sp: true
+  # The heading number of requests that is used to warm up the API's execution.
+# These requests will execute normally without invoking stored procedures
+webridge.use.sp.warmup: 5
+# The threshold that identifies a hot path
+recorder.threshold: 5
+
+  # [Runtime]
+# ---------------------- Start configurations for the offline analyzer
+webridge.offline.compiler.enable: false
+# The ip address that the application going to connect with
+webridge.offline.compiler.host: 127.0.0.1
+# the database that is used to automatically register the generated stored procedures
+db.jdbcUrl: jdbc:mysql://127.0.0.1:3306/ApolloPortalDB
+db.user: admin
+db.password: password
+# ---------------------- End configurations for the offline analyzer
