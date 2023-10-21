@@ -395,7 +395,7 @@ create index idx_cust_nick on CUSTOMER (CUSTOMER_NICK);
 
 LOCK TABLES `CUSTOMER` WRITE;
 /*!40000 ALTER TABLE `CUSTOMER` DISABLE KEYS */;
-INSERT INTO `CUSTOMER` VALUES (1,_binary '\0',NULL,NULL,NULL,'350 Du Languadoc','Boucherville','CSTI Consulting','Leonardo','DiCaprio',NULL,NULL,'J1B-8J6',NULL,NULL,'CSTI Consulting',NULL,NULL,'2020-12-21 05:37:49','358 Du Languadoc','Boucherville',NULL,'Leonardo','DiCaprio','J1B-8J6',NULL,NULL,'test@shopizer.com','M','shopizer','$2a$10$1tFq1yqpgWTv42M0c5BkYOYGYXGBCia7UAyxdmphFQiYXUwAKwXpe',NULL,13,9,1,13,9,1),(2,_binary '\0',NULL,'2020-12-21 05:51:18',NULL,NULL,NULL,NULL,'first','last',NULL,NULL,NULL,'West Virginia',NULL,NULL,0.00,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'me@shenjiahuan.com','F','me@shenjiahuan.com','$2a$10$FTYZ6sY4bQQYXc5O0Y4akuXZ44umwapJHjzMtVLukwqEzhvKDO2pq',NULL,91,NULL,1,NULL,NULL,1);
+INSERT INTO `CUSTOMER` VALUES (1,_binary '\0',NULL,NULL,NULL,'350 Du Languadoc','Boucherville','CSTI Consulting','Leonardo','DiCaprio',NULL,NULL,'J1B-8J6',NULL,NULL,'CSTI Consulting',NULL,NULL,'2020-12-21 05:37:49','358 Du Languadoc','Boucherville',NULL,'Leonardo','DiCaprio','J1B-8J6',NULL,NULL,'test@shopizer.com','M','shopizer','$2a$10$1tFq1yqpgWTv42M0c5BkYOYGYXGBCia7UAyxdmphFQiYXUwAKwXpe',NULL,13,9,1,13,9,1),(2,_binary '\0',NULL,'2020-12-21 05:51:18',NULL,NULL,NULL,NULL,'first','last',NULL,NULL,NULL,'West Virginia',NULL,NULL,0.00,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'me@abc.com','F','me@abc.com','$2a$10$FTYZ6sY4bQQYXc5O0Y4akuXZ44umwapJHjzMtVLukwqEzhvKDO2pq',NULL,91,NULL,1,NULL,NULL,1);
 /*!40000 ALTER TABLE `CUSTOMER` ENABLE KEYS */;
 UNLOCK TABLES;
 

@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.7.21, for Linux (x86_64)
 --
--- Host: localhost    Database: pybbs_ys
+-- Host: localhost    Database: pybbs
 -- ------------------------------------------------------
 -- Server version	5.7.21-1ubuntu1
 

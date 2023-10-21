@@ -23,7 +23,7 @@ spring:
     hibernate:
       ddl_auto: none
   datasource:
-    url: jdbc:mysql://172.17.90.253:3306/sagan_ys?#autoReconnect=true&useLocalSessionState=true&useUnicode=true&characterEncoding=UTF-8&readOnlyPropagatesToServer=false
+    url: jdbc:mysql://172.17.90.253:3306/sagan?#autoReconnect=true&useLocalSessionState=true&useUnicode=true&characterEncoding=UTF-8&readOnlyPropagatesToServer=false
     username: root
     password: admin
     driver-class-name: com.mysql.jdbc.Driver
@@ -76,7 +76,7 @@ webridge.offline.compiler.enable: false
 # The ip address that the application going to connect with
 webridge.offline.compiler.host: 127.0.0.1
 # the database that is used to automatically register the generated stored procedures
-db.jdbcUrl: jdbc:mysql://172.17.90.253:3306/sagan_ys
+db.jdbcUrl: jdbc:mysql://172.17.90.253:3306/sagan
 db.user: root
 db.password: admin
 # ---------------------- End configurations for the offline analyzer

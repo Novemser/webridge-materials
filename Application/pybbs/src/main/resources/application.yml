@@ -76,7 +76,7 @@ webridge.offline.compiler.enable: false
 webridge.offline.compiler.host: 127.0.0.1
 # the database that is used to automatically register the generated stored procedures
 
-db.jdbcUrl: jdbc:mysql://127.0.0.1:3306/pybbs_ys?autoReconnect=true&useLocalSessionState=true&readOnlyPropagatesToServer=false&useSSL=false&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+db.jdbcUrl: jdbc:mysql://127.0.0.1:3306/pybbs?autoReconnect=true&useLocalSessionState=true&readOnlyPropagatesToServer=false&useSSL=false&characterEncoding=utf8&serverTimezone=Asia/Shanghai
 db.user: admin
 db.password: password
 

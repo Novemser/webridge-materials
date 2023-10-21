@@ -10,7 +10,7 @@ PERF_BASE_DIR=/root/perf/shopizer/latency
 DB_HOST=172.17.90.255
 DB_PORT=3306
 DB_PASSWORD="admin"
-DB_NAME=shopizer_ys
+DB_NAME=shopizer
 WEB_HOST="http://172.20.209.149:8089/api/v1"
 
 mkdir -p $LOG_DIR

@@ -12,7 +12,7 @@ DB_HOST=172.17.90.253
 #DB_HOST=172.23.76.177
 DB_PORT=3306
 DB_PASSWORD="admin"
-DB_NAME=shopizer_hgs
+DB_NAME=shopizer
 WEB_HOST="http://172.20.209.139:8089/api/v1"
 
 mkdir -p $LOG_DIR

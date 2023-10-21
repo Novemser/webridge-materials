@@ -43,7 +43,7 @@ webridge.offline.compiler.enable=false
 # The ip address that the application going to connect with
 webridge.offline.compiler.host=127.0.0.1
 # the database that is used to automatically register the generated stored procedures
-db.jdbcUrl=jdbc:mysql://10.0.0.104:3307/shopizer_hgs
+db.jdbcUrl=jdbc:mysql://10.0.0.104:3307/shopizer
 db.user=root
 db.password=admin
 # ---------------------- End configurations for the offline analyzer

@@ -1,6 +1,6 @@
 site:
   datasource_driver: com.mysql.jdbc.Driver
-  datasource_url: jdbc:mysql://127.0.0.1:3306/pybbs_ys?autoReconnect=true&useLocalSessionState=true&readOnlyPropagatesToServer=false&useSSL=false&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+  datasource_url: jdbc:mysql://127.0.0.1:3306/pybbs?autoReconnect=true&useLocalSessionState=true&readOnlyPropagatesToServer=false&useSSL=false&characterEncoding=utf8&serverTimezone=Asia/Shanghai
   datasource_username: admin
   datasource_password: password
 
