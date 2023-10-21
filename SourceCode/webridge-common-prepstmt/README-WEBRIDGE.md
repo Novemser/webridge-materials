@@ -1,4 +1,4 @@
-# webridge-common for normal and stored procedure
+# webridge-common for prepared statement
 
 ## How to build
 
