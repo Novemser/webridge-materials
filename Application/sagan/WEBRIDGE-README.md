@@ -14,8 +14,6 @@ We need to start both site and render service
 
 Access the website through localhost:8080
 
-## How to debug
+## Configuration
 
-    # Using Remote JVM Debug
-    # Default port 5005
-    SPRING_PROFILES_ACTIVE=standalone ./gradlew :sagan-site:bootRun --debug-jvm
+Refer to `sagan-site/src/main/resources/application.yml`
