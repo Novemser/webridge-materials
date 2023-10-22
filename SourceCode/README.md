@@ -38,7 +38,7 @@ Refer to its WEBRIDGE-README.md
 # How to run WeBridge
 First start the offline compiler, then run the application.
 
-## Run the offline
+## Run the offline compiler server
 
 We recommend to use the scripts in webridge-common directory to start offline compiler
 
@@ -46,12 +46,16 @@ Then start another instance of online one
 
 Finally, use webench to send requests to online for generating stored procedures
 
-## Run the online
+## Start the applications
+
+Please refer to the readme documents under the folder of each application.
+
+## Reproducing the evaluation numbers
 
 We recommond to use the scripts in `webench/scripts`.
 
 Take apollo as an example
 
-Use `webench/scripts/apollo/webench_thpt.sh` to run throughput test.
+Use `webench/scripts/apollo/webench_thpt.sh` to run latency test.
 
 Use `webench/scripts/apollo/webench_latency.sh` to run throughput test.
